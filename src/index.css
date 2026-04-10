@@ -46,75 +46,121 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    /* Tokens de marca para uso directo con Tailwind */
+    --color-sura-azul: var(--sura-azul);
+    --color-sura-amarillo: var(--sura-amarillo);
+    --color-sura-aqua: var(--sura-aqua);
+    --color-sura-amarillo-medio: var(--sura-amarillo-medio);
+    --color-sura-gris: var(--sura-gris);
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
+    /* ── Paleta de marca Sura ──────────────────────────────────────────
+       Disponibles como bg-sura-azul, text-sura-amarillo, etc.
+    ───────────────────────────────────────────────────────────────── */
+    --sura-azul:           oklch(0.38 0.183 263);   /* RGB(0, 51, 160)    */
+    --sura-amarillo:       oklch(0.90 0.189 111);   /* RGB(227, 232, 41)  */
+    --sura-aqua:           oklch(0.69 0.120 213);   /* RGB(0, 174, 199)   */
+    --sura-amarillo-medio: oklch(0.93 0.173 101);   /* RGB(255, 233, 70)  */
+    --sura-gris:           oklch(0.922 0 0);        /* RGB(229, 229, 229) */
+
+    /* ── Tokens Shadcn – modo claro ─────────────────────────────────── */
+    --background:           oklch(1 0 0);
+    --foreground:           oklch(0.15 0.04 263);
+
+    --card:                 oklch(1 0 0);
+    --card-foreground:      oklch(0.15 0.04 263);
+
+    --popover:              oklch(1 0 0);
+    --popover-foreground:   oklch(0.15 0.04 263);
+
+    /* Primary → Azul Sura */
+    --primary:              oklch(0.38 0.183 263);
+    --primary-foreground:   oklch(1 0 0);
+
+    /* Secondary → Amarillo Sura */
+    --secondary:            oklch(0.90 0.189 111);
+    --secondary-foreground: oklch(0.15 0.04 263);
+
+    --muted:                oklch(0.97 0 0);
+    --muted-foreground:     oklch(0.556 0 0);
+
+    /* Accent → Aqua Sura */
+    --accent:               oklch(0.69 0.120 213);
+    --accent-foreground:    oklch(0.15 0.04 263);
+
+    --destructive:          oklch(0.577 0.245 27.325);
+
+    --border:               oklch(0.922 0 0);
+    --input:                oklch(0.922 0 0);
+    --ring:                 oklch(0.38 0.183 263);
+
+    /* Charts usando la paleta completa de marca */
+    --chart-1:              oklch(0.38 0.183 263);   /* Azul Sura          */
+    --chart-2:              oklch(0.69 0.120 213);   /* Aqua Sura          */
+    --chart-3:              oklch(0.90 0.189 111);   /* Amarillo Sura      */
+    --chart-4:              oklch(0.93 0.173 101);   /* Amarillo Medio     */
+    --chart-5:              oklch(0.28 0.12 263);    /* Azul Sura oscuro   */
+
     --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+
+    /* Sidebar → fondo Azul Sura, acento Amarillo Sura */
+    --sidebar:                    oklch(0.38 0.183 263);
+    --sidebar-foreground:         oklch(1 0 0);
+    --sidebar-primary:            oklch(0.90 0.189 111);
+    --sidebar-primary-foreground: oklch(0.15 0.04 263);
+    --sidebar-accent:             oklch(0.46 0.18 263);
+    --sidebar-accent-foreground:  oklch(1 0 0);
+    --sidebar-border:             oklch(0.30 0.15 263);
+    --sidebar-ring:               oklch(0.90 0.189 111);
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    /* ── Tokens Shadcn – modo oscuro ────────────────────────────────── */
+    --background:           oklch(0.15 0.04 263);
+    --foreground:           oklch(0.985 0 0);
+
+    --card:                 oklch(0.22 0.05 263);
+    --card-foreground:      oklch(0.985 0 0);
+
+    --popover:              oklch(0.22 0.05 263);
+    --popover-foreground:   oklch(0.985 0 0);
+
+    /* Primary → Azul Sura aclarado para legibilidad sobre fondo oscuro */
+    --primary:              oklch(0.55 0.18 263);
+    --primary-foreground:   oklch(0.15 0.04 263);
+
+    /* Secondary → Amarillo Sura (igual, contrasta bien en oscuro) */
+    --secondary:            oklch(0.90 0.189 111);
+    --secondary-foreground: oklch(0.15 0.04 263);
+
+    --muted:                oklch(0.25 0.04 263);
+    --muted-foreground:     oklch(0.65 0 0);
+
+    /* Accent → Aqua Sura */
+    --accent:               oklch(0.69 0.120 213);
+    --accent-foreground:    oklch(0.15 0.04 263);
+
+    --destructive:          oklch(0.704 0.191 22.216);
+
+    --border:               oklch(1 0 0 / 12%);
+    --input:                oklch(1 0 0 / 18%);
+    --ring:                 oklch(0.90 0.189 111);
+
+    --chart-1:              oklch(0.55 0.18 263);    /* Azul Sura claro    */
+    --chart-2:              oklch(0.69 0.120 213);   /* Aqua Sura          */
+    --chart-3:              oklch(0.90 0.189 111);   /* Amarillo Sura      */
+    --chart-4:              oklch(0.93 0.173 101);   /* Amarillo Medio     */
+    --chart-5:              oklch(0.75 0 0);         /* Gris claro         */
+
+    --sidebar:                    oklch(0.12 0.04 263);
+    --sidebar-foreground:         oklch(0.985 0 0);
+    --sidebar-primary:            oklch(0.90 0.189 111);
+    --sidebar-primary-foreground: oklch(0.15 0.04 263);
+    --sidebar-accent:             oklch(0.22 0.05 263);
+    --sidebar-accent-foreground:  oklch(0.985 0 0);
+    --sidebar-border:             oklch(1 0 0 / 10%);
+    --sidebar-ring:               oklch(0.90 0.189 111);
 }
 
 @layer base {
