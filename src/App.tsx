@@ -1,7 +1,17 @@
+import { Route, Routes } from "react-router"
+import { AppLayout } from "@/components/layout/AppLayout"
+import Dashboard from "@/pages/Dashboard"
+
 export default function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">Maravilla Smart Portfolio</h1>
-    </main>
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="/portfolio"   element={<></>} />
+        <Route path="/investments" element={<></>} />
+        <Route path="/analysis"    element={<></>} />
+        <Route path="/settings"    element={<></>} />
+      </Route>
+    </Routes>
   )
 }
