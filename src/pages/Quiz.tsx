@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react"
 import { useNavigate } from "react-router"
+import { Moon, Sun } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAuth } from "@/context/AuthContext"
+import { useTheme } from "@/context/ThemeContext"
 
 const questions = [
   {
@@ -103,6 +105,7 @@ export default function Quiz() {
   const navigate = useNavigate()
   const { submitQuiz, user } = useAuth()
 
+  const { theme, toggleTheme } = useTheme()
   const [answers, setAnswers] = useState<Record<number, number>>({})
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -139,6 +142,23 @@ export default function Quiz() {
   }
 
   return (
+    <div className="relative min-h-screen bg-sura-azul dark:bg-sura-gris-oscuro">
+
+      {/* Toggle tema */}
+      <div className="absolute right-4 top-4 z-20">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={toggleTheme}
+          className="gap-2 text-white/60 hover:bg-white/10 hover:text-white"
+        >
+          {theme === "light" ? <Moon className="size-4" /> : <Sun className="size-4" />}
+          <span className="hidden text-xs sm:inline">
+            {theme === "light" ? "INVERSIONES" : "AHORRO"}
+          </span>
+        </Button>
+      </div>
+
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 px-4 py-8 md:px-8">
       <Card className="border-primary/15">
         <CardHeader>
@@ -192,11 +212,16 @@ export default function Quiz() {
       <Card>
         <CardFooter className="flex flex-col items-stretch gap-3">
           {error && <p className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
-          <Button onClick={handleSubmit} disabled={loading}>
+          <Button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="bg-sura-amarillo font-semibold text-sura-gris-oscuro hover:bg-sura-amarillo-medio"
+          >
             {loading ? "Procesando perfil..." : "Ver resultado de perfil"}
           </Button>
         </CardFooter>
       </Card>
+    </div>
     </div>
   )
 }

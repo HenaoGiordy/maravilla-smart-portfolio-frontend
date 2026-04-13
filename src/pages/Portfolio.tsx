@@ -181,7 +181,7 @@ export default function Portfolio() {
                 <span className={cn("text-2xl font-extrabold", meta.colorClass)}>
                   {avgTotal}%
                 </span>
-                <span className="text-xs text-muted-foreground"> / año</span>
+                <span className="text-xs text-muted-foreground"> / E.A</span>
               </Metric>
               <Metric label="Perfil de riesgo">
                 <span className="text-sm font-semibold">{activeProfile?.risk_level ?? "Moderado"}</span>
@@ -283,7 +283,7 @@ function LegendItem({
       <p className="text-2xl font-extrabold leading-none">{pct}%</p>
       <div>
         <p className="text-[10px] text-muted-foreground">Rendimiento promedio</p>
-        <p className={cn("text-sm font-bold", returnColorClass)}>+{returnPct}% / año</p>
+        <p className={cn("text-sm font-bold", returnColorClass)}>+{returnPct}% E.A.</p>
       </div>
     </div>
   )
@@ -320,7 +320,7 @@ function InstrumentsCard({
             </div>
             <div className="text-right shrink-0">
               <p className="text-sm font-bold">{inst.pct}%</p>
-              <p className={cn("text-xs font-semibold", accentClass)}>+{inst.return}%</p>
+              <p className={cn("text-xs font-semibold", accentClass)}>+{inst.return}% E.A.</p>
             </div>
           </div>
         ))}
@@ -331,7 +331,7 @@ function InstrumentsCard({
             <span className="text-sm font-semibold">Promedio {title}</span>
           </div>
           <span className={cn("text-lg font-extrabold", accentClass)}>
-            +{avgReturn}% / año
+            +{avgReturn}% E.A.
           </span>
         </div>
       </CardContent>

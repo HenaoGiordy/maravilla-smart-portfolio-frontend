@@ -7,6 +7,8 @@ import Register from "@/pages/Register"
 import Quiz from "@/pages/Quiz"
 import QuizResult from "@/pages/QuizResult"
 import Portfolio from "@/pages/Portfolio"
+import Simulator from "@/pages/Simulator"
+import Settings from "@/pages/Settings"
 import { useAuth } from "@/context/AuthContext"
 
 function PrivateRoute({ children }: { children: ReactNode }) {
@@ -38,9 +40,9 @@ export default function App() {
       <Route element={<PrivateRoute><AppLayout /></PrivateRoute>}>
         <Route index element={<Dashboard />} />
         <Route path="/portfolio"   element={<Portfolio />} />
-        <Route path="/investments" element={<></>} />
+        <Route path="/investments" element={<Simulator />} />
         <Route path="/analysis"    element={<></>} />
-        <Route path="/settings"    element={<></>} />
+        <Route path="/settings"    element={<Settings />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
