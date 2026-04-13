@@ -2,6 +2,7 @@ import { CheckCircle2, ChevronRight, Shield, Sparkles, TrendingUp, Zap } from "l
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { useAuth } from "@/context/AuthContext"
 import {
   Card,
   CardContent,
@@ -52,6 +53,8 @@ const profiles = [
 ]
 
 export default function Dashboard() {
+  const { user, activeProfile } = useAuth()
+
   return (
     <div className="flex flex-col gap-8 px-8 py-8">
 
@@ -69,7 +72,7 @@ export default function Dashboard() {
               </span>
             </div>
             <h1 className="text-2xl font-bold text-white leading-snug">
-              ¡Bienvenido de nuevo, Juan!
+              ¡Bienvenido de nuevo, {user?.name?.split(" ")[0] ?? "inversionista"}!
             </h1>
             <p className="max-w-md text-sm text-white/70 leading-relaxed">
               Planifica tu futuro financiero con nuestras herramientas de
@@ -87,7 +90,9 @@ export default function Dashboard() {
       <div>
         <h2 className="text-lg font-bold text-foreground">Perfiles de Inversión</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Selecciona el perfil que mejor se ajuste a tu tolerancia al riesgo
+          {activeProfile
+            ? `Perfil activo: ${activeProfile.name} · Puntaje ${activeProfile.score ?? "N/A"}`
+            : "Selecciona el perfil que mejor se ajuste a tu tolerancia al riesgo"}
         </p>
       </div>
 

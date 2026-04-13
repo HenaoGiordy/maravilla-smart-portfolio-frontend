@@ -27,6 +27,26 @@ npm run dev
 
 La aplicacion estara disponible en `http://localhost:5173`.
 
+## Configuracion API
+
+1. Crea archivo de entorno local:
+
+```bash
+cp .env.example .env
+```
+
+2. Ajusta la URL del backend:
+
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8001
+```
+
+## Flujos implementados
+
+- Registro: `/register` -> `/quiz` -> `/quiz-result` -> `/`
+- Login: `/login` -> `/`
+- Ruta autenticada con JWT (access + refresh)
+
 ## Scripts disponibles
 
 | Script | Descripcion |

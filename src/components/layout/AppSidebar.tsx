@@ -1,12 +1,16 @@
 import {
   BarChart3,
   LayoutDashboard,
+  LogOut,
   PieChart,
   Settings,
   TrendingUp,
 } from "lucide-react"
 import { NavLink, useLocation } from "react-router"
+import { useNavigate } from "react-router"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { useAuth } from "@/context/AuthContext"
 import {
   Sidebar,
   SidebarContent,
@@ -26,14 +30,22 @@ const navItems = [
   { icon: Settings,        label: "Configuración",  to: "/settings"    },
 ]
 
-const mockUser = {
-  name: "Giordy Pavel Henao",
-  email: "giordy.henao@proteccion.com",
-  initials: "GH",
-}
-
 export function AppSidebar() {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const { user, logout } = useAuth()
+
+  const initials = (user?.name ?? "??")
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase()
+
+  const handleLogout = () => {
+    logout()
+    navigate("/login")
+  }
 
   return (
     <Sidebar collapsible="icon">
@@ -84,15 +96,19 @@ export function AppSidebar() {
       <SidebarFooter className="border-t border-sidebar-border px-4 py-4 group-data-[state=collapsed]:px-2 group-data-[state=collapsed]:py-3">
         <div className="flex items-center gap-3 group-data-[state=collapsed]:justify-center">
           <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sidebar-primary text-[13px] font-bold text-sidebar-primary-foreground">
-            {mockUser.initials}
+            {initials}
           </div>
           <div className="min-w-0 group-data-[state=collapsed]:hidden">
             <p className="truncate text-[13px] font-semibold text-sidebar-foreground leading-tight">
-              {mockUser.name}
+              {user?.name ?? "Usuario"}
             </p>
             <p className="truncate text-[11px] text-sidebar-foreground/55 leading-tight mt-0.5">
-              {mockUser.email}
+              {user?.email ?? ""}
             </p>
+            <Button variant="ghost" size="sm" className="mt-2 h-7 w-full justify-start px-1 text-xs" onClick={handleLogout}>
+              <LogOut className="size-3.5" />
+              Cerrar sesión
+            </Button>
           </div>
         </div>
       </SidebarFooter>
