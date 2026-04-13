@@ -318,7 +318,7 @@ export default function Simulator() {
                       tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                     />
                     <Tooltip
-                      formatter={(v: number) => `$${v.toLocaleString()}`}
+                      formatter={(v) => typeof v === "number" ? `$${v.toLocaleString()}` : v}
                       contentStyle={{ borderRadius: 8, fontSize: 12 }}
                     />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
@@ -358,7 +358,7 @@ export default function Simulator() {
                       tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                     />
                     <Tooltip
-                      formatter={(v: number) => `$${v.toLocaleString()}`}
+                      formatter={(v) => typeof v === "number" ? `$${v.toLocaleString()}` : v}
                       contentStyle={{ borderRadius: 8, fontSize: 12 }}
                     />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
