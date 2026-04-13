@@ -1,8 +1,10 @@
 import { useMemo } from "react"
 import { Navigate, useLocation, useNavigate } from "react-router"
+import { Moon, Sun } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { useTheme } from "@/context/ThemeContext"
 
 type QuizResultState = {
   score: number
@@ -17,6 +19,8 @@ export default function QuizResult() {
   const location = useLocation()
   const result = location.state as QuizResultState | undefined
 
+  const { theme, toggleTheme } = useTheme()
+
   const riskLabel = useMemo(() => {
     if (!result) return ""
     if (result.risk_level === "low") return "Bajo"
@@ -29,7 +33,23 @@ export default function QuizResult() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-3rem)] items-center justify-center px-4 py-8">
+    <div className="relative flex min-h-screen items-center justify-center bg-sura-azul px-4 py-8 dark:bg-sura-gris-oscuro">
+
+      {/* Toggle tema */}
+      <div className="absolute right-4 top-4 z-20">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={toggleTheme}
+          className="gap-2 text-white/60 hover:bg-white/10 hover:text-white"
+        >
+          {theme === "light" ? <Moon className="size-4" /> : <Sun className="size-4" />}
+          <span className="hidden text-xs sm:inline">
+            {theme === "light" ? "INVERSIONES" : "AHORRO"}
+          </span>
+        </Button>
+      </div>
+
       <Card className="w-full max-w-xl border-primary/20">
         <CardHeader>
           <CardTitle className="mt-2 text-2xl">Tu perfil recomendado: {result.profile_name}</CardTitle>
@@ -43,7 +63,12 @@ export default function QuizResult() {
           </p>
         </CardContent>
         <CardFooter>
-          <Button className="w-full" onClick={() => navigate("/")}>Ir al inicio</Button>
+          <Button
+            className="w-full bg-sura-amarillo font-semibold text-sura-gris-oscuro hover:bg-sura-amarillo-medio"
+            onClick={() => navigate("/")}
+          >
+            Ir al inicio
+          </Button>
         </CardFooter>
       </Card>
     </div>
