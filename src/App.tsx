@@ -10,11 +10,12 @@ import Portfolio from "@/pages/Portfolio"
 import { useAuth } from "@/context/AuthContext"
 
 function PrivateRoute({ children }: { children: ReactNode }) {
-  const { user, loading } = useAuth()
+  const { loading } = useAuth()
 
   if (loading) return null
-  // TODO: re-enable before deploy
-  // if (!user) return <Navigate to="/login" replace />
+
+  //if (!user) return <Navigate to="/login" replace />
+
   return <>{children}</>
 }
 
