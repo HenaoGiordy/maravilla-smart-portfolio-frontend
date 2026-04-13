@@ -1,9 +1,10 @@
 import {
-  BarChart3,
   LayoutDashboard,
   LogOut,
+  Moon,
   PieChart,
   Settings,
+  Sun,
   TrendingUp,
 } from "lucide-react"
 import { NavLink, useLocation } from "react-router"
@@ -11,6 +12,7 @@ import { useNavigate } from "react-router"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/context/AuthContext"
+import { useTheme } from "@/context/ThemeContext"
 import {
   Sidebar,
   SidebarContent,
@@ -23,17 +25,17 @@ import {
 } from "@/components/ui/sidebar"
 
 const navItems = [
-  { icon: LayoutDashboard, label: "Inicio",         to: "/"            },
-  { icon: PieChart,        label: "Mi Portafolio",  to: "/portfolio"   },
-  { icon: TrendingUp,      label: "Inversiones",    to: "/investments" },
-  { icon: BarChart3,       label: "Análisis",       to: "/analysis"    },
-  { icon: Settings,        label: "Configuración",  to: "/settings"    },
+  { icon: LayoutDashboard, label: "Inicio",        to: "/"            },
+  { icon: PieChart,        label: "Mi Portafolio", to: "/portfolio"   },
+  { icon: TrendingUp,      label: "Simulacion",    to: "/investments" },
+  { icon: Settings,        label: "Configuración", to: "/settings"    },
 ]
 
 export function AppSidebar() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const { user, logout } = useAuth()
+  const { theme, toggleTheme } = useTheme()
 
   const initials = (user?.name ?? "??")
     .split(" ")
@@ -92,8 +94,27 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      {/* ── Usuario logueado ───────────────────────────────────── */}
+      {/* ── Footer: usuario + toggle tema ──────────────────────── */}
       <SidebarFooter className="border-t border-sidebar-border px-4 py-4 group-data-[state=collapsed]:px-2 group-data-[state=collapsed]:py-3">
+
+        {/* Toggle de tema */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={toggleTheme}
+          title={theme === "light" ? "Cambiar a INVERSIONES" : "Cambiar a AHORRO"}
+          className="mb-3 h-8 w-full justify-start gap-2 px-2 text-xs text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground group-data-[state=collapsed]:justify-center group-data-[state=collapsed]:px-0"
+        >
+          {theme === "light"
+            ? <Moon className="size-3.5 shrink-0" />
+            : <Sun  className="size-3.5 shrink-0" />
+          }
+          <span className="group-data-[state=collapsed]:hidden">
+            {theme === "light" ? "INVERSIONES" : "AHORRO"}
+          </span>
+        </Button>
+
+        {/* Usuario */}
         <div className="flex items-center gap-3 group-data-[state=collapsed]:justify-center">
           <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sidebar-primary text-[13px] font-bold text-sidebar-primary-foreground">
             {initials}
@@ -111,6 +132,7 @@ export function AppSidebar() {
             </Button>
           </div>
         </div>
+
       </SidebarFooter>
 
     </Sidebar>

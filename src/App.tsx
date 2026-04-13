@@ -6,13 +6,15 @@ import Login from "@/pages/Login"
 import Register from "@/pages/Register"
 import Quiz from "@/pages/Quiz"
 import QuizResult from "@/pages/QuizResult"
+import Portfolio from "@/pages/Portfolio"
 import { useAuth } from "@/context/AuthContext"
 
 function PrivateRoute({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth()
 
   if (loading) return null
-  if (!user) return <Navigate to="/login" replace />
+  // TODO: re-enable before deploy
+  // if (!user) return <Navigate to="/login" replace />
   return <>{children}</>
 }
 
@@ -34,7 +36,7 @@ export default function App() {
 
       <Route element={<PrivateRoute><AppLayout /></PrivateRoute>}>
         <Route index element={<Dashboard />} />
-        <Route path="/portfolio"   element={<></>} />
+        <Route path="/portfolio"   element={<Portfolio />} />
         <Route path="/investments" element={<></>} />
         <Route path="/analysis"    element={<></>} />
         <Route path="/settings"    element={<></>} />

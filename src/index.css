@@ -46,121 +46,134 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
-    /* Tokens de marca para uso directo con Tailwind */
-    --color-sura-azul: var(--sura-azul);
-    --color-sura-amarillo: var(--sura-amarillo);
-    --color-sura-aqua: var(--sura-aqua);
-    --color-sura-amarillo-medio: var(--sura-amarillo-medio);
-    --color-sura-gris: var(--sura-gris);
+    /* ── Tokens de marca Sura — disponibles como clases Tailwind ── */
+    --color-sura-azul:            var(--sura-azul);
+    --color-sura-amarillo:        var(--sura-amarillo);
+    --color-sura-aqua:            var(--sura-aqua);
+    --color-sura-aqua-brillante:  var(--sura-aqua-brillante);
+    --color-sura-amarillo-medio:  var(--sura-amarillo-medio);
+    --color-sura-gris:            var(--sura-gris);
+    --color-sura-gris-medio:      var(--sura-gris-medio);
+    --color-sura-gris-oscuro:     var(--sura-gris-oscuro);
 }
 
 :root {
-    /* ── Paleta de marca Sura ──────────────────────────────────────────
-       Disponibles como bg-sura-azul, text-sura-amarillo, etc.
-    ───────────────────────────────────────────────────────────────── */
-    --sura-azul:           oklch(0.38 0.183 263);   /* RGB(0, 51, 160)    */
-    --sura-amarillo:       oklch(0.90 0.189 111);   /* RGB(227, 232, 41)  */
-    --sura-aqua:           oklch(0.69 0.120 213);   /* RGB(0, 174, 199)   */
-    --sura-amarillo-medio: oklch(0.93 0.173 101);   /* RGB(255, 233, 70)  */
-    --sura-gris:           oklch(0.922 0 0);        /* RGB(229, 229, 229) */
+    /* ════════════════════════════════════════════════════════════════
+       PALETA AHORRO  (tema claro / corporativo)
+       ────────────────────────────────────────────────────────────────
+       Principal:     Amarillo SURA · Pantone 427C · Blanco · Azul SURA
+       Complementaria: Amarillo medio · Aqua SURA · Aqua SURA brillante
+    ════════════════════════════════════════════════════════════════ */
 
-    /* ── Tokens Shadcn – modo claro ─────────────────────────────────── */
-    --background:           oklch(1 0 0);
-    --foreground:           oklch(0.15 0.04 263);
+    /* — Colores de marca — */
+    --sura-azul:           oklch(0.382 0.181 264);  /* RGB(0,   51,  160) Azul SURA           */
+    --sura-amarillo:       oklch(0.896 0.198 109);  /* RGB(227, 232,  41) Amarillo SURA        */
+    --sura-aqua:           oklch(0.688 0.123 211);  /* RGB(0,   174, 199) Aqua SURA            */
+    --sura-aqua-brillante: oklch(0.762 0.104 213);  /* RGB(78,  195, 224) Aqua SURA brillante  */
+    --sura-amarillo-medio: oklch(0.932 0.177 101);  /* RGB(255, 233,  70) Amarillo medio       */
+    --sura-gris:           oklch(0.918 0 0);        /* RGB(229, 229, 229) Pantone 427C         */
+    --sura-gris-medio:     oklch(0.802 0 0);        /* RGB(198, 198, 198) Pantone 420C         */
+    --sura-gris-oscuro:    oklch(0.395 0.009 264);  /* RGB(83,   86,  90) Pantone Cool Gray 11 */
+
+    /* — Tokens UI — */
+    --background:           oklch(1 0 0);                  /* Blanco */
+    --foreground:           oklch(0.15 0.04 264);
 
     --card:                 oklch(1 0 0);
-    --card-foreground:      oklch(0.15 0.04 263);
+    --card-foreground:      oklch(0.15 0.04 264);
 
     --popover:              oklch(1 0 0);
-    --popover-foreground:   oklch(0.15 0.04 263);
+    --popover-foreground:   oklch(0.15 0.04 264);
 
-    /* Primary → Azul Sura */
-    --primary:              oklch(0.38 0.183 263);
+    --primary:              var(--sura-azul);               /* Azul SURA */
     --primary-foreground:   oklch(1 0 0);
 
-    /* Secondary → Amarillo Sura */
-    --secondary:            oklch(0.90 0.189 111);
-    --secondary-foreground: oklch(0.15 0.04 263);
+    --secondary:            var(--sura-amarillo);           /* Amarillo SURA */
+    --secondary-foreground: oklch(0.15 0.04 264);
 
-    --muted:                oklch(0.97 0 0);
-    --muted-foreground:     oklch(0.556 0 0);
+    --muted:                var(--sura-gris);               /* Pantone 427C */
+    --muted-foreground:     oklch(0.45 0 0);
 
-    /* Accent → Aqua Sura */
-    --accent:               oklch(0.69 0.120 213);
-    --accent-foreground:    oklch(0.15 0.04 263);
+    --accent:               var(--sura-aqua);               /* Aqua SURA */
+    --accent-foreground:    oklch(0.15 0.04 264);
 
     --destructive:          oklch(0.577 0.245 27.325);
 
-    --border:               oklch(0.922 0 0);
-    --input:                oklch(0.922 0 0);
-    --ring:                 oklch(0.38 0.183 263);
+    --border:               var(--sura-gris);               /* Pantone 427C */
+    --input:                var(--sura-gris);
+    --ring:                 var(--sura-azul);
 
-    /* Charts usando la paleta completa de marca */
-    --chart-1:              oklch(0.38 0.183 263);   /* Azul Sura          */
-    --chart-2:              oklch(0.69 0.120 213);   /* Aqua Sura          */
-    --chart-3:              oklch(0.90 0.189 111);   /* Amarillo Sura      */
-    --chart-4:              oklch(0.93 0.173 101);   /* Amarillo Medio     */
-    --chart-5:              oklch(0.28 0.12 263);    /* Azul Sura oscuro   */
+    /* Charts AHORRO: azul → aqua → amarillo → aqua brillante → gris medio */
+    --chart-1:              var(--sura-azul);
+    --chart-2:              var(--sura-aqua);
+    --chart-3:              var(--sura-amarillo);
+    --chart-4:              var(--sura-aqua-brillante);
+    --chart-5:              var(--sura-gris-medio);
 
     --radius: 0.625rem;
 
-    /* Sidebar → fondo Azul Sura, acento Amarillo Sura */
-    --sidebar:                    oklch(0.38 0.183 263);
+    /* Sidebar AHORRO: fondo Azul SURA, activo Amarillo SURA */
+    --sidebar:                    var(--sura-azul);
     --sidebar-foreground:         oklch(1 0 0);
-    --sidebar-primary:            oklch(0.90 0.189 111);
-    --sidebar-primary-foreground: oklch(0.15 0.04 263);
-    --sidebar-accent:             oklch(0.46 0.18 263);
+    --sidebar-primary:            var(--sura-amarillo);
+    --sidebar-primary-foreground: oklch(0.15 0.04 264);
+    --sidebar-accent:             oklch(0.46 0.18 264);
     --sidebar-accent-foreground:  oklch(1 0 0);
-    --sidebar-border:             oklch(0.30 0.15 263);
-    --sidebar-ring:               oklch(0.90 0.189 111);
+    --sidebar-border:             oklch(0.30 0.15 264);
+    --sidebar-ring:               var(--sura-amarillo);
 }
 
 .dark {
-    /* ── Tokens Shadcn – modo oscuro ────────────────────────────────── */
-    --background:           oklch(0.15 0.04 263);
-    --foreground:           oklch(0.985 0 0);
+    /* ════════════════════════════════════════════════════════════════
+       PALETA INVERSIONES  (tema oscuro)
+       ────────────────────────────────────────────────────────────────
+       Principal:      Amarillo SURA · Pantone Cool Gray 11 · Blanco
+       Complementaria: Pantone 420C · Pantone 427C · Azul SURA
+    ════════════════════════════════════════════════════════════════ */
 
-    --card:                 oklch(0.22 0.05 263);
+    --background:           oklch(0.28 0.009 264);          /* más oscuro que Cool Gray 11 */
+    --foreground:           oklch(0.985 0 0);               /* Blanco */
+
+    --card:                 var(--sura-gris-oscuro);        /* Pantone Cool Gray 11 */
     --card-foreground:      oklch(0.985 0 0);
 
-    --popover:              oklch(0.22 0.05 263);
+    --popover:              var(--sura-gris-oscuro);
     --popover-foreground:   oklch(0.985 0 0);
 
-    /* Primary → Azul Sura aclarado para legibilidad sobre fondo oscuro */
-    --primary:              oklch(0.55 0.18 263);
-    --primary-foreground:   oklch(0.15 0.04 263);
+    --primary:              var(--sura-amarillo);           /* Amarillo SURA — protagonista */
+    --primary-foreground:   oklch(0.28 0.009 264);
 
-    /* Secondary → Amarillo Sura (igual, contrasta bien en oscuro) */
-    --secondary:            oklch(0.90 0.189 111);
-    --secondary-foreground: oklch(0.15 0.04 263);
+    --secondary:            var(--sura-gris-medio);         /* Pantone 420C */
+    --secondary-foreground: oklch(0.15 0.04 264);
 
-    --muted:                oklch(0.25 0.04 263);
-    --muted-foreground:     oklch(0.65 0 0);
+    --muted:                oklch(0.45 0.009 264);
+    --muted-foreground:     var(--sura-gris-medio);         /* Pantone 420C */
 
-    /* Accent → Aqua Sura */
-    --accent:               oklch(0.69 0.120 213);
-    --accent-foreground:    oklch(0.15 0.04 263);
+    --accent:               var(--sura-aqua);               /* Aqua SURA */
+    --accent-foreground:    oklch(0.28 0.009 264);
 
     --destructive:          oklch(0.704 0.191 22.216);
 
     --border:               oklch(1 0 0 / 12%);
-    --input:                oklch(1 0 0 / 18%);
-    --ring:                 oklch(0.90 0.189 111);
+    --input:                oklch(1 0 0 / 10%);
+    --ring:                 var(--sura-amarillo);
 
-    --chart-1:              oklch(0.55 0.18 263);    /* Azul Sura claro    */
-    --chart-2:              oklch(0.69 0.120 213);   /* Aqua Sura          */
-    --chart-3:              oklch(0.90 0.189 111);   /* Amarillo Sura      */
-    --chart-4:              oklch(0.93 0.173 101);   /* Amarillo Medio     */
-    --chart-5:              oklch(0.75 0 0);         /* Gris claro         */
+    /* Charts INVERSIONES: amarillo → aqua → aqua brillante → azul → gris */
+    --chart-1:              var(--sura-amarillo);
+    --chart-2:              var(--sura-aqua);
+    --chart-3:              var(--sura-aqua-brillante);
+    --chart-4:              var(--sura-azul);
+    --chart-5:              var(--sura-gris-medio);
 
-    --sidebar:                    oklch(0.12 0.04 263);
+    /* Sidebar INVERSIONES: más oscuro que el fondo, activo Amarillo SURA */
+    --sidebar:                    oklch(0.23 0.009 264);
     --sidebar-foreground:         oklch(0.985 0 0);
-    --sidebar-primary:            oklch(0.90 0.189 111);
-    --sidebar-primary-foreground: oklch(0.15 0.04 263);
-    --sidebar-accent:             oklch(0.22 0.05 263);
+    --sidebar-primary:            var(--sura-amarillo);
+    --sidebar-primary-foreground: oklch(0.28 0.009 264);
+    --sidebar-accent:             oklch(0.32 0.009 264);
     --sidebar-accent-foreground:  oklch(0.985 0 0);
     --sidebar-border:             oklch(1 0 0 / 10%);
-    --sidebar-ring:               oklch(0.90 0.189 111);
+    --sidebar-ring:               var(--sura-amarillo);
 }
 
 @layer base {

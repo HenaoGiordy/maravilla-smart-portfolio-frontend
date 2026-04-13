@@ -16,31 +16,34 @@ const profiles = [
   {
     level: "Bajo",
     levelIcon: Shield,
-    levelBadgeClass: "h-auto border-emerald-200 bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700",
+    // Conservador → Aqua SURA (calma, estabilidad)
+    levelBadgeClass: "h-auto border-sura-aqua/40 bg-sura-aqua/10 px-3 py-1 text-sm font-semibold text-sura-aqua",
     name: "Conservador",
     description: "Perfil de bajo riesgo con inversiones estables y predecibles",
     returnRange: "4-6%",
-    returnClass: "text-emerald-600",
+    returnClass: "text-sura-aqua",
     features: ["Bonos del estado", "Fondos de renta fija", "Baja volatilidad"],
     buttonVariant: "outline" as const,
-    cardClass: "border-emerald-100 hover:border-emerald-300",
+    cardClass: "border-sura-aqua/20 hover:border-sura-aqua/50",
   },
   {
     level: "Medio",
     levelIcon: TrendingUp,
-    levelBadgeClass: "h-auto border-amber-200 bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700",
+    // Moderado → Amarillo SURA (equilibrio)
+    levelBadgeClass: "h-auto border-sura-amarillo/50 bg-sura-amarillo/15 px-3 py-1 text-sm font-semibold text-sura-gris-oscuro dark:text-sura-amarillo",
     name: "Moderado",
     description: "Balance entre seguridad y crecimiento para inversores equilibrados",
     returnRange: "7-10%",
-    returnClass: "text-amber-600",
+    returnClass: "text-sura-gris-oscuro dark:text-sura-amarillo",
     features: ["Mix de acciones y bonos", "Diversificación media", "Crecimiento estable"],
     buttonVariant: "secondary" as const,
-    cardClass: "border-amber-100 hover:border-amber-300",
+    cardClass: "border-sura-amarillo/30 hover:border-sura-amarillo/60",
     featured: true,
   },
   {
     level: "Alto",
     levelIcon: Zap,
+    // Agresivo → Primary (Azul SURA en AHORRO, Amarillo SURA en INVERSIONES)
     levelBadgeClass: "h-auto border-primary/20 bg-primary/8 px-3 py-1 text-sm font-semibold text-primary",
     name: "Agresivo",
     description: "Máximo potencial de crecimiento para inversores con alta tolerancia",
@@ -59,9 +62,12 @@ export default function Dashboard() {
     <div className="flex flex-col gap-8 px-8 py-8">
 
       {/* ── Hero ───────────────────────────────────────────────── */}
-      <div className="relative overflow-hidden rounded-2xl bg-sura-azul px-8 py-8 shadow-md">
-        <div className="pointer-events-none absolute -right-10 -top-10 size-52 rounded-full bg-white/5" />
-        <div className="pointer-events-none absolute -bottom-8 right-24 size-36 rounded-full bg-sura-amarillo/15" />
+      <div className="relative overflow-hidden rounded-2xl bg-sura-azul px-8 py-8 shadow-md
+                      dark:bg-sura-gris-oscuro dark:ring-1 dark:ring-sura-amarillo/25">
+        {/* blob superior — en oscuro se vuelve amarillo */}
+        <div className="pointer-events-none absolute -right-10 -top-10 size-52 rounded-full bg-white/5 dark:bg-sura-amarillo/10" />
+        {/* blob inferior — acento amarillo más visible en oscuro */}
+        <div className="pointer-events-none absolute -bottom-8 right-24 size-40 rounded-full bg-sura-amarillo/15 dark:bg-sura-amarillo/20" />
 
         <div className="relative flex items-start justify-between gap-6">
           <div className="flex flex-col gap-3">
@@ -80,7 +86,8 @@ export default function Dashboard() {
               tus objetivos.
             </p>
           </div>
-          <div className="hidden shrink-0 items-center justify-center rounded-xl bg-white/10 p-4 md:flex">
+          <div className="hidden shrink-0 items-center justify-center rounded-xl bg-white/10 p-4 md:flex
+                          dark:bg-sura-amarillo/15">
             <TrendingUp className="size-10 text-sura-amarillo" />
           </div>
         </div>
