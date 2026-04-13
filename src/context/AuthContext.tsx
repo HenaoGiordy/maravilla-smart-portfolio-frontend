@@ -209,14 +209,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(stored.user)
     setAccessToken(stored.accessToken)
     setRefreshToken(stored.refreshToken)
-    setLoading(false)
   }, [])
 
   useEffect(() => {
-    if (!loading && accessToken) {
-      void refreshMe()
+    if (accessToken && loading) {
+      void refreshMe().finally(() => setLoading(false))
     }
-  }, [loading, accessToken])
+  }, [accessToken])
 
   const register = async (payload: RegisterInput) => {
     const auth = await apiRequest<AuthPayload>("/api/v1/auth/register", {
