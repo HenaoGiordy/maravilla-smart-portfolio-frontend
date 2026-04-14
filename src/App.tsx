@@ -12,11 +12,11 @@ import Settings from "@/pages/Settings"
 import { useAuth } from "@/context/AuthContext"
 
 function PrivateRoute({ children }: { children: ReactNode }) {
-  const { loading } = useAuth()
+  const { user, loading } = useAuth()
 
   if (loading) return null
 
-  //if (!user) return <Navigate to="/login" replace />
+  if (!user) return <Navigate to="/login" replace />
 
   return <>{children}</>
 }

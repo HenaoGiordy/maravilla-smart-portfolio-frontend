@@ -146,23 +146,15 @@ export default function Simulator() {
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">$</span>
                 <Input
-                  type="number"
-                  value={monthly}
-                  onChange={(e) => setMonthly(Number(e.target.value))}
+                  type="text"
+                  inputMode="numeric"
+                  value={monthly ? monthly.toLocaleString("es-CO") : ""}
+                  onChange={(e) => {
+                    const raw = e.target.value.replace(/\D/g, "")
+                    setMonthly(raw ? Number(raw) : 0)
+                  }}
                   className="pl-7"
-                  min={100}
-                  step={100}
                 />
-              </div>
-              <input
-                type="range"
-                value={monthly}
-                onChange={(e) => setMonthly(Number(e.target.value))}
-                min={100} max={5000} step={100}
-                className="w-full accent-sura-azul dark:accent-sura-amarillo"
-              />
-              <div className="flex justify-between text-xs text-muted-foreground">
-                <span>$100</span><span>$5,000</span>
               </div>
             </CardContent>
           </Card>

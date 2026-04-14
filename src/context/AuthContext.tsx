@@ -20,6 +20,8 @@ type Profile = {
   expected_return?: string | null
   score?: number | null
   description?: string | null
+  equity_allocation?: number | null
+  fixed_income_allocation?: number | null
   is_active: boolean
   created_at: string
 }
