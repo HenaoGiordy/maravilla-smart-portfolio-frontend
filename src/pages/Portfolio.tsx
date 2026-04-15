@@ -129,13 +129,17 @@ const chartConfig = {
 export default function Portfolio() {
   const { user, activeProfile, accessToken } = useAuth()
 
-  const riskKey = (activeProfile?.risk_level?.toLowerCase() ?? "moderado") as RiskLevel
+  const riskLevelMap: Record<string, RiskLevel> = {
+    low: "conservador", medium: "moderado", high: "agresivo",
+    conservador: "conservador", moderado: "moderado", agresivo: "agresivo",
+  }
+  const riskKey = riskLevelMap[activeProfile?.risk_level?.toLowerCase() ?? ""] ?? "moderado"
   const data    = portfolioData[riskKey] ?? portfolioData.moderado
   const meta    = riskMeta[riskKey]      ?? riskMeta.moderado
   const RiskIcon = meta.Icon
 
-  const equityPct = activeProfile?.equity_allocation  ?? data.variable
-  const fixedPct  = activeProfile?.fixed_income_allocation ?? data.fixed
+  const equityPct = activeProfile?.equity_allocation  || data.variable
+  const fixedPct  = activeProfile?.fixed_income_allocation || data.fixed
 
   const [dailyGains, setDailyGains] = useState<DailyGain[]>([])
   const [gainsLoading, setGainsLoading] = useState(false)
@@ -207,7 +211,7 @@ export default function Portfolio() {
             )}
           >
             <RiskIcon className="size-4" />
-            Riesgo {meta.label}
+            Perfil {activeProfile?.name}
           </Badge>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { CheckCircle2, ChevronRight, Shield, Sparkles, TrendingUp, Zap } from "lucide-react"
+import { useNavigate } from "react-router"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -14,6 +15,7 @@ import {
 
 const profiles = [
   {
+    key: "conservador",
     level: "Bajo",
     levelIcon: Shield,
     // Conservador → Aqua SURA (calma, estabilidad)
@@ -27,6 +29,7 @@ const profiles = [
     cardClass: "border-sura-aqua/20 hover:border-sura-aqua/50",
   },
   {
+    key: "moderado",
     level: "Medio",
     levelIcon: TrendingUp,
     // Moderado → Amarillo SURA (equilibrio)
@@ -41,6 +44,7 @@ const profiles = [
     featured: true,
   },
   {
+    key: "agresivo",
     level: "Alto",
     levelIcon: Zap,
     // Agresivo → Primary (Azul SURA en AHORRO, Amarillo SURA en INVERSIONES)
@@ -57,6 +61,7 @@ const profiles = [
 
 export default function Dashboard() {
   const { user, activeProfile } = useAuth()
+  const navigate = useNavigate()
 
   return (
     <div className="flex flex-col gap-8 px-8 py-8">
@@ -159,7 +164,12 @@ export default function Dashboard() {
                 </CardContent>
 
                 <CardFooter className="border-0 bg-transparent">
-                  <Button variant={profile.buttonVariant} className="w-full justify-between" size="lg">
+                  <Button
+                    variant={profile.buttonVariant}
+                    className="w-full justify-between"
+                    size="lg"
+                    onClick={() => navigate("/investments", { state: { profile: profile.key } })}
+                  >
                     Simular
                     <ChevronRight className="size-4" />
                   </Button>
