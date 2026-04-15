@@ -1,5 +1,4 @@
 import {
-  Bell,
   LayoutDashboard,
   LogOut,
   Moon,
@@ -8,7 +7,8 @@ import {
   Sun,
   TrendingUp,
 } from "lucide-react"
-import { NavLink, useLocation, useNavigate } from "react-router"
+import { NavLink, useLocation } from "react-router"
+import { useNavigate } from "react-router"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/context/AuthContext"
@@ -28,7 +28,6 @@ const navItems = [
   { icon: LayoutDashboard, label: "Inicio",        to: "/"            },
   { icon: PieChart,        label: "Mi Portafolio", to: "/portfolio"   },
   { icon: TrendingUp,      label: "Simulacion",    to: "/investments" },
-  { icon: Bell,            label: "Notificaciones",to: "/notifications" },
   { icon: Settings,        label: "Configuración", to: "/settings"    },
 ]
 
