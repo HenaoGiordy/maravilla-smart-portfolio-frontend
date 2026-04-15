@@ -236,7 +236,7 @@ export default function Portfolio() {
                 <span className="text-xs text-muted-foreground"> / E.A</span>
               </Metric>
               <Metric label="Perfil de riesgo">
-                <span className="text-sm font-semibold">{activeProfile?.risk_level ?? "Moderado"}</span>
+                <span className="text-sm font-semibold">{activeProfile?.name ?? "Moderado"}</span>
               </Metric>
             </div>
           </CardContent>
