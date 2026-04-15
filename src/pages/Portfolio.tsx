@@ -157,10 +157,10 @@ export default function Portfolio() {
   }, [riskKey, accessToken])
 
   const variableInstruments = dailyGains.length > 0
-    ? data.variableInstruments.map((inst, i) => ({
-        name:   dailyGains[i]?.name         ?? inst.name,
-        pct:    inst.pct,
-        return: dailyGains[i]?.annual_return ?? inst.return,
+    ? dailyGains.map((gain, i) => ({
+        name:   gain.name ?? gain.symbol,
+        pct:    data.variableInstruments[i]?.pct ?? Math.round(equityPct / dailyGains.length),
+        return: gain.annual_return ?? data.variableInstruments[i]?.return ?? 0,
       }))
     : data.variableInstruments
 
@@ -399,7 +399,7 @@ function LegendItem({
       <p className="text-2xl font-extrabold leading-none">{pct}%</p>
       <div>
         <p className="text-[10px] text-muted-foreground">Rendimiento promedio</p>
-        <p className={cn("text-sm font-bold", returnColorClass)}>+{returnPct}% E.A.</p>
+        <p className={cn("text-sm font-bold", returnColorClass)}>{returnPct}% E.A.</p>
       </div>
     </div>
   )
@@ -458,7 +458,7 @@ function InstrumentsCard({
                 </div>
                 <div className="text-right shrink-0">
                   <p className="text-sm font-bold">{inst.pct}%</p>
-                  <p className={cn("text-xs font-semibold", accentClass)}>+{inst.return}% E.A.</p>
+                  <p className={cn("text-xs font-semibold", accentClass)}>{inst.return}% E.A.</p>
                 </div>
               </div>
             ))}
@@ -468,7 +468,7 @@ function InstrumentsCard({
                 <span className="text-sm font-semibold">Promedio {title}</span>
               </div>
               <span className={cn("text-lg font-extrabold", accentClass)}>
-                +{avgReturn}% E.A.
+                {avgReturn}% E.A.
               </span>
             </div>
           </>
