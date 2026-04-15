@@ -94,7 +94,7 @@ export default function Notifications() {
         { method: "POST" },
         accessToken
       )
-      setMsg({ ok: true, text: "Notificación encolada. Revisa tu correo en unos minutos" })
+      setMsg({ ok: true, text: "Notificación enviada. Revisa tu correo y la carpeta de spam." })
     } catch (err) {
       setMsg({ ok: false, text: err instanceof Error ? err.message : "No se pudo enviar la notificación" })
     } finally {
